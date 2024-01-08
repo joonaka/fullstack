@@ -1,0 +1,14 @@
+Note left of browser: User writes a new note and clicks the save button
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    activate server
+    Note right of browser: The browser sends the new note data to the server
+    server-->>browser: Response (201 Created)
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server-->>browser: [{ "content": "Moi", "date": "2024-1-8" }, ... ]
+    deactivate server
+
+    Note right of browser: The browser executes the callback function that renders the updated notes
